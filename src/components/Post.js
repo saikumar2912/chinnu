@@ -14,7 +14,7 @@ const dispatch=useDispatch();
     console.log(Display)
 
     return (
-<div>
+<div class="col-xl-6 col-lg-6 col-6">
   {Display.map(e=>id === e.skill_id._id ?
     <Card className='homepage__card'>
 
@@ -30,22 +30,25 @@ const dispatch=useDispatch();
           <div className="bit_name">
           <strong> Bit_Title:</strong>  {e.bit_id.title}
           </div>
-<div className="content">
+<div className="con">
   Content:{e.content}
   </div>
 
   <div className="icons">
-  
-   <div>
+  <div class="warn-img">
+   
    <BiLike className="like_icon" onClick={()=>{dispatch(like(e._id,user._id));}}  variant="contained"
        size={100}/>{e.like.length}
 <BiDislike className="dislike_icon"  onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
+</div>
 <WarningIcon className="warning_icon" onClick={()=>{dispatch(irrevelant(e._id,user._id))}} size={100}/>{e.irrevelant_content.length}
 
-</div>
+
   </div>
   
-  </Card>:<></> )} 
+  </Card>
+  :<></> )} 
+  
      </div>
               
           

@@ -33,8 +33,12 @@ export default function RecipeReviewCard() {
   return (
 
     <>   
+    <div class="card-class">
+    <div class="row">
     {Data.map((e)=> <>
-              {e.Title.length > 0 ?<Card className='skill__card'>
+              {e.Title.length > 0 ?
+              <div class="col-xl-4 col-lg-4 col-4">
+              <Card className='skill__card'>
               <div className="homepage__card__header" >
 
 
@@ -52,7 +56,7 @@ export default function RecipeReviewCard() {
               </div>
               <div className="btn-div">
               {user.role==="user"?<div>
-                <button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> 
+                <button className="btn btn-primary" onClick={()=>dispatch(follow(e._id,user._id))}> 
                 {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
 </button>
 </div>:
@@ -71,6 +75,7 @@ export default function RecipeReviewCard() {
               </div>
 
               </Card>
+              </div>
               
           
          
@@ -84,6 +89,9 @@ export default function RecipeReviewCard() {
     
       
     )}
+    </div>
+    </div>
     </>
   );
+  
 }

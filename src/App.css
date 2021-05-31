@@ -33,7 +33,7 @@
 
 a{text-decoration: none;}
 .topbar-items{display: flex; justify-content: flex-end !important; position: relative; margin-left: auto; min-width: 375px; padding: 1rem 1rem; margin-top: .5rem;}
-.topbar-links{text-decoration: none; color: #fff; font-size: 1.125rem; margin-left: 1rem;}
+.topbar-links{text-decoration: none; color: #fff; font-size: 1.125rem; margin-left: 1rem; padding:.5rem;}
 .content{position: relative; background-color: #fff; flex: 1 1 auto!important; display: flex!important; flex-direction: column;}
 
 .carousel{background-color: grey; position: relative; width: 100%;}
@@ -46,3 +46,9 @@ a{text-decoration: none;}
 .c-card-con{margin-left: 3rem; font-size: 1rem; font-weight: 500; padding: 1rem;}
 .c-card-con p{justify-content: center;}
 .c-card-con a{text-decoration: blue; margin-right: 1rem;}
+.topbar-links:hover{
+  background-color: white;
+  color:blue;
+  text-decoration: none;
+  border-radius: 5px;
+}

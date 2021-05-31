@@ -10,7 +10,7 @@ import AddCourse from '../Admin/AddCourse';
 import Bit from '../Admin/Bit';
 import profilepage from '../Pages/profilepage';
 import Search from './Search';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
@@ -23,7 +23,7 @@ const history=useHistory();
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <div>
+    <div class="wrapper">
         <nav className='navbars'>
         <Link to='/navbar/home' className='navbar_logo' onClick={closeMobileMenu}>
           BUILD OUT
@@ -36,6 +36,7 @@ const history=useHistory();
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
+          
         <li className='navbar-item'>
 
         <Search/>
@@ -96,6 +97,11 @@ const history=useHistory();
         <Route path="/navbar/view" component={Bit}/>  
 <Route path="/navbar/profile" component={profilepage}/>
 
+<footer class="c-footer">
+            <div class="c-inner">
+              Copyright BuildOut. All rights reserved. For internal use only.
+            </div>
+          </footer>
 
     </div>
   );
