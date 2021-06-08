@@ -20,14 +20,14 @@ console.log(state)
 
   return (
     <div class="card-class"> 
-    
-      <div class="row">
+          <div class="h-row">
+
       {skill.map(e=>e.followers.map(s=>(
-        user._id ===s ? <Post id={e._id}/>:<></>
+        user._id ===s ? <Post id={e._id}/> :<div> </div>
+
       )))}
       </div>
-      </div>
-    
+    </div>
   )
 }
 

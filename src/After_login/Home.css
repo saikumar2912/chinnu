@@ -4,20 +4,13 @@
   justify-content: start;
   font-size:1.25rem;
 font-family:Bold;
-/* align-items: justify; */
 border-radius: 10px;
 align-self: flex-end;
 text-align: left;
+margin-bottom: 2rem;
 
  
 }
-/* .delete-icon{
-  margin-left:90%;
- margin-top:-5%
-
-} */
-
-
 
 .homepage__card__header{
     display: flex;
@@ -25,11 +18,13 @@ text-align: left;
     align-items: center;
 
     padding: 10px;
-    background: transparent linear-gradient(270deg, #00BAFF 0%, #004DFF 100%) 0% 0% no-repeat padding-box ;
+    background:#194445d9 ;
     
   }
   .homepage__card__header__avatar{
       padding:5px;
+      width:60px;
+      height:60px;
   }
 
   .skill_name{
@@ -38,15 +33,19 @@ text-align: left;
       color:white;
       flex:1 !important;
       display:flex;
+      flex-direction: column;
   }
   .user_name{
-    margin-top:1rem;
-    padding:1rem
+    /* margin-top:1rem; */
+    /* padding:1rem */
+    
+    margin-left: 1rem;
 
   }
 .bit_name{
     margin-top:10px;
     padding-left: 1rem;
+    text-transform: capitalize;
 }
 .warn-img{
     display:flex;
@@ -54,9 +53,15 @@ text-align: left;
 
 }
 .con{
- display:inherit;
+ /* display:inherit;
   padding-left:1rem;
     margin-top:10px;
+    text-transform: capitalize;
+    font-weight:bold; */
+    display: -webkit-box;   
+    -webkit-line-clamp: 3;   
+    -webkit-box-orient: vertical;     
+    overflow: hidden; 
 }
 .icons{
     margin-top:1rem;
@@ -68,6 +73,14 @@ text-align: left;
     height:30px;
     margin-right:10px;
     cursor:pointer;
+    color:rgb(9, 133, 250);
+
+}
+.likes_icon{
+    width:30px;
+    height:30px;
+    margin-right:10px;
+    cursor:pointer;
 
 }
 .dislike_icon{
@@ -75,11 +88,33 @@ text-align: left;
     height: 30px;
     margin-left:15px;
     cursor:pointer;
+    color:rgb(9, 133, 250);
 
+}
+.dislikes_icon{
+    width:30px;
+    height: 30px;
+    margin-left:15px;
+    cursor:pointer;
+    color:black
 }
 .warning_icon{
     width:30px;
     height: 30px;
     cursor:pointer;
+    color:red;
+}
+.warnings_icon{
+    width:30px;
+    height: 30px;
+    cursor:pointer;
+    color:black;
 }
 
+.h-row{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}

@@ -4,9 +4,10 @@ import { Button } from 'primereact/button';
 import {useDispatch,useSelector} from 'react-redux'
 import {bitdetails, DeleteBit, submit} from '../Redux/Auth/ADMIN/BitAction'
 import { Card } from '@material-ui/core';
-import { DeletePost } from '../Redux/Auth/Login/DisplayAction';
-
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import SimplePopover from './EditBit';
 const Bit = (props) => {
+
   const {location:{state}}=props;
   console.log(state)
   const dispatch=useDispatch()
@@ -15,6 +16,9 @@ console.log(Data)
 // const [bit,setBit]=useState([])
 const bit = useSelector(state => state)
 console.log(bit)
+const user = useSelector(state => state.user.user)
+  console.log(user)
+
 
 const[title,setTitle]=useState('')
     useEffect(()=>{
@@ -35,13 +39,21 @@ const[title,setTitle]=useState('')
    {Data.map((e)=><>
    {e.title.length >0 ?<Card>
      {e.title}
-     {/* <button onClick={()=>{dispatch(DeleteBit(e.bit_id))}}> delete</button> */}
-   </Card>:<></>}
+
+     {user.role==="user"?<></>:<>
+     <SimplePopover id={e.bit_id}/>
+     <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
+     
+     </>}
+   </Card>:<>
+  
+   </>}
    </>)}
   
  <div>
-<input onChange={(e)=>setTitle(e.target.value)}/>
-<Button label="ADD" onClick={()=>dispatch(submit(state,title))}/>
+   {user.role==="user"?<></>:<><input onChange={(e)=>setTitle(e.target.value)}/>
+<Button label="ADD" onClick={()=>dispatch(submit(state,title))}/></>}
+ 
 </div> 
 
   </div>

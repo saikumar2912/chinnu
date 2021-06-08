@@ -3,8 +3,12 @@ import Axios from 'axios';
 import './Register.css'
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useHistory} from 'react-router-dom';
+
 
 const Register = (props) => {
+ const history=useHistory()
+
 const[name,setName]=useState('');
 const[email,setEmail]=useState('');
 const[phoneNo,setphoneNo]=useState('');
@@ -54,13 +58,17 @@ function validatepassword(){
             phoneNo:d,
             password:e,
         }
-        Axios.post('http://localhost:4000/users/adduser',register)
-        .then( (res)=>console.log(res.data))
-        .then(
-         alert("Registered successful")
-        ).catch((e)=>{alert(e.message)})
-        console.log(register)
+        Axios.post('http://localhost:8000/users/addUser',register)
+        .then((res)=>{
+        alert(res.data.message)
 
+            if(res.data.message ==="Registered successfully  please login in")
+        {
+       history.push('/login')
+        }})
+        
+        .catch((e)=>{alert(e.message)})
+        console.log(register)
     }
 
   const handlesubmit=(e)=>{

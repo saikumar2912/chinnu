@@ -1,7 +1,8 @@
 import services from './services';
 import { createBrowserHistory } from 'history';
 import { Skill } from '../ADMIN/SkillAction';
- 
+import axios from 'axios';
+import {getCurrentUser} from './services'
 // import {useHistory} from  'react-router-dom'
 export const history = createBrowserHistory();
 export const login=(email,password)=>{
@@ -15,6 +16,8 @@ export const login=(email,password)=>{
      {
         services.getCurrentUser().then(res=>{
           dispatch(fetchuser(res))
+          console.log(res)
+          dispatch(Achivement(res._id))
           dispatch(Skill())
 
           console.log(res)
@@ -27,6 +30,34 @@ export const login=(email,password)=>{
     }
       )};
 };
+
+export const Achivement=(user_id)=>{
+  return(dispatch)=>{
+    const Token = () => localStorage.getItem("user");
+  
+    return  axios.post('http://localhost:4000/achivement/userachive',{user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
+  }).then(
+      (res)=> {
+         console.log(res.data)
+         dispatch(achivement(res.data))
+
+        
+      })
+  }
+  
+}
+export const Update=(id,user_name,phoneNo,profile_picture,Education,Bio)=>{
+  return(dispatch)=>{
+    const Token = () => localStorage.getItem("user");
+  
+    return  axios.patch(`http://localhost:4000/users/updateUser/${id}`,{user_name:user_name,phoneNo:phoneNo,profile_picture:profile_picture,Education:Education,Bio:Bio},{headers:{authorization:`Bearer ${Token()}`}
+  }).then(
+      (res)=> {
+        console.log(res.data)
+        dispatch(fetchuser(res.data))
+      })
+  }
+}
 export const logout=()=>{
   return(dispatch)=>{
     dispatch(userlogout())
@@ -42,5 +73,17 @@ const fetchuser=(user)=>{
 const userlogout=()=>{
   return{
     type:"LOGOUT"
+  }
+}
+const achivement=(a)=>{
+  return{
+    type:'ACHIVEMENT',
+    payload:a
+  }
+}
+const update=(a)=>{
+  return{
+    type:'UPDATE',
+    payload:a
   }
 }

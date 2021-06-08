@@ -1,19 +1,19 @@
 import React,{useState,useEffect} from 'react'
 import Axios from 'axios';
-
+import {useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 const Search = () => {
     const[search,setSearch]=useState('')
-    const [Data,setData] = useState([]);
-    useEffect(()=>{
-      Axios.post('http://localhost:4000/skiils/getskill')
-      .then(
-        (res)=>setData(res.data)
-       )
-      },[])
- console.log(Data);
+
+const state = useSelector(state => state)
+console.log(state)
+    const history =useHistory();
+   
     return (
         <div>
-            <input type="text" className="form-control" placeholder="Search skills"/>
+            <input className="search__input" type="text" placeholder="Search skills" onChange={(e)=>setSearch(e.target.value)}  />
+            <SearchRoundedIcon className="search__icon" onClick={()=>{history.push('./search',search)}}></SearchRoundedIcon>
         </div>
     )
 }

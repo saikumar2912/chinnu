@@ -7,6 +7,7 @@ body{
 }
 .card-class{
   padding:1rem;
+  background: #79cbcda8;
   min-height: calc(100vh - calc(4.5rem + 2.5rem));
 }
 .team-container
@@ -66,7 +67,7 @@ img{
 }
 
 
-.btn
+/* .btn
 {
   color: #ffffff;
   width: 130px;
@@ -81,8 +82,8 @@ img{
   outline:none;
   border:none;
   text-transform: uppercase;
-  
-}
+   */
+
 .btn:hover{
   background:linear-gradient(
       90deg,
@@ -212,4 +213,57 @@ box-shadow: 3px 3px 3px 3px #e6e6e6;
   background-color:lightgrey;
   transition: 250ms;
 
+}
+.description{
+     margin-top:1rem; 
+    padding:1rem
+
+}
+.ka-container{
+  padding-left:1rem;
+  padding-right: 1rem;
+}
+
+.ka-cardlist{
+  position:relative;
+  min-width:0;
+  margin:1rem;
+  padding:1rem;
+}
+
+.ka-cardlist .ka-prev, .ka-cardlist .ka-next{
+  display:block;
+  width:1.25rem;
+  height: 100%;
+  position:absolute;
+  left:-1.125rem;
+  top:0;
+  z-index:1;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 8'%3E%3Cpath fill='none' stroke='%2343425D' stroke-width='1' d='M5 0 L1 4 L5 8' /%3E%3C/svg%3E") no-repeat center #fff;
+  background-size:40% auto;
+}
+.ka-cardlist .ka-next{
+  left:100%;
+  transform:scale(-1);
+}
+.ka-cardlist-wrap{
+  position:relative;
+  width:100%;
+  overflow: hidden;
+}
+.ka-cardlist-inner{
+  display: flex;
+  width:100%;
+  position:relative;
+  transition: left .2s;
+}
+.ka-summarycard{
+  border-color: #bebebe;
+  min-height: 210px;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.375rem rgb(0 0 0 / 16%);
+  flex:0 0 calc(55% - 1rem);
+  max-width:calc(55% - 1rem);
+  margin:0 .75rem 0 .25rem;
+  
 }

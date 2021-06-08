@@ -43,7 +43,7 @@ const Login = () => {
               <input type="password"  name='password' placeholder=" Enter Your Password"  className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
             </div>
                <button
-               className='btn btn-primary'
+               className='btn login-button'
                onClick={()=>{
                    dispatch(login(email,password))
                  }

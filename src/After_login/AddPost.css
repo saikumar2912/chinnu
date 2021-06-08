@@ -20,8 +20,9 @@
     width:500px;
 
 }
-textarea.form-control{
+textarea{
     height:300px;
+resize:none;
 }
 .post__btn{
     justify-content:center;

@@ -13,7 +13,8 @@
   flex: 1 1 auto;
 }
 .topbar-class{
-  background-color: transparent linear-gradient(270deg, #00BAFF 0%, #00FA9A 100%) 0% 0% no-repeat padding-box;
+  background: #194445d9;
+  /* background-color: transparent linear-gradient(270deg, #00BAFF 0%, #00FA9A 100%) 0% 0% no-repeat padding-box; */
   position:sticky;
   top:0;
   width:100%;
@@ -21,7 +22,8 @@
 }
 .topbar-class .contain{
   height:4.5rem;
-  background:transparent linear-gradient(270deg, #00BAFF 0%, #004DFF 100%) 0% 0% no-repeat padding-box;
+  
+  /* background:transparent linear-gradient(270deg, #00BAFF 0%, #004DFF 100%) 0% 0% no-repeat padding-box; */
   display:flex !important;
   flex-wrap: wrap!important;
   padding-left:1rem;
@@ -39,7 +41,7 @@ a{text-decoration: none;}
 .carousel{background-color: grey; position: relative; width: 100%;}
 .carousel-item img{min-height: 20rem; border-radius: 0;}
 .carousel-inner .carousel-caption{color:black;}
-.c-footer{min-height: 2.5rem; text-align: center; font-size: .75rem; padding: .685rem 0; flex-shrink: 0; position: relative; color:white; background:transparent linear-gradient(270deg, #00BAFF 0%, #004DFF 100%) 0% 0% no-repeat padding-box ;}
+.c-footer{min-height: 2.5rem; text-align: center; font-size: .75rem; padding: .685rem 0; flex-shrink: 0; position: relative; color:white;background: #194445d9}
 .c-card{display: flex; margin: 1rem 1rem; max-height: 20rem;}
 .c-card .c-card-img img{width: 20rem; height: 15rem; border-radius: 2rem;}
 .c-con{display: flex; flex-direction: column; margin: 1rem 1rem;  box-shadow: 0 0 0.5rem rgb(0 0 0 / 16%); position: relative;}

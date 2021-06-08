@@ -18,10 +18,11 @@ const [Data,setData] = useState([]);
 const[value,setValue]=useState([]);
 const[skill,setSkill]=useState([]);
 const [id,setId]=useState([]);
+const Token = () => localStorage.getItem("user");
 
     useEffect(()=>{
         
-      Axios.post('http://localhost:8000/skill/userskills',{user_id:user._id})
+      Axios.post('http://localhost:8000/skill/userskills',{user_id:user._id},{headers:{authorization:`Bearer ${Token()}`}})
       .then((res)=>{setData(res.data.skills)
         }
     )
@@ -37,7 +38,7 @@ const Skillchange=(e)=>{
    const skill=Data[e.target.value].skill_id
     // console.log(skill)
         
-    Axios.post("http://localhost:8000/bit/newskill",{skill_id:skill})
+    Axios.post("http://localhost:8000/bit/newskill",{skill_id:skill},{headers:{authorization:`Bearer ${Token()}`}})
             .then((res)=>setValue(res.data.bits)) 
 }
 console.log(skill)
@@ -59,7 +60,7 @@ const BitChange=(e)=>{
        content:a,
         like:b
     }
-    Axios.post("http://localhost:8000/post/addpost",posted)
+    Axios.post("http://localhost:8000/post/addpost",posted,{headers:{authorization:`Bearer ${Token()}`}})
     .then((res)=>(console.log(res.data)))
     .then(alert("posted succeffully"))
     .catch((e)=>{alert(e.message)})
@@ -87,7 +88,7 @@ const BitChange=(e)=>{
             </div>
            
             <div className="post__textarea"> 
-            <textarea  cols="50" rows="20" className="textarea form-control"onChange={(e)=>setContent(e.target.value)} placeholder="Content"></textarea>
+            <textarea  cols="50" rows="20"  className="textarea"onChange={(e)=>setContent(e.target.value)} placeholder="Content"></textarea>
 
             </div>
 <div className="post__btn">

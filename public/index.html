@@ -23,6 +23,42 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
     integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
     crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+      var kaScrollerConfig = {}, kaScrollerContainer = $('.ka-cardlist-wrap')[0], 
+kaScroller = $('.ka-cardlist-wrap .ka-cardlist-inner')[0];
+
+function setTimeline() {
+kaScrollerConfig = {
+    kaScrollerWidth: kaScroller.ScrollWidth || 0,
+    kaScrollerContainerWidth: kaScrollerContainer.clientWidth || 0,
+    kaScrollerLeft: parseInt(kaScroller.offsetLeft),
+    kaScrollerHidden: function(){
+        return (this.kaScrollerWidth + this.kaScrollerLeft) - this.kaScrollerContainerWidth;
+    }
+};                    
+//update arrows
+$('.ka-cardlist .ka-next').toggleClass('disabled', (kaScrollerConfig.kaScrollerHidden() === 0));
+$('.ka-cardlist .ka-prev').toggleClass('disabled', (kaScrollerConfig.kaScrollerLeft === 0));
+}
+
+$('.ka-cardlist .ka-next, .ka-cardlist .ka-prev').click(function(e){
+e.preventDefault();
+var kaScrollerDirection = $(this).hasClass('ka-next')? 'right' : 'left';
+
+setTimeline();
+var kaScrollerPositionLeft = kaScrollerConfig.kaScrollerLeft;
+if (kaScrollerDirection==="right") {
+    amountToScroll = -(Math.abs(kaScrollerPositionLeft) + Math.min(kaScrollerConfig.kaScrollerHidden(), kaScrollerConfig.kaScrollerContainerWidth));
+} else {
+    amountToScroll = Math.min(0, (kaScrollerConfig.kaScrollerContainerWidth + kaScrollerPositionLeft));
+}
+kaScroller.style.left = amountToScroll + "px";
+setTimeout(function(){ setTimeline(); }, 200);
+});
+
+    </script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

@@ -1,10 +1,11 @@
-import React from 'react'
-import{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import { Avatar, Card } from '@material-ui/core';
-import{BiDislike, BiLike} from 'react-icons/bi'
-import WarningIcon from '@material-ui/icons/Warning';
 import {  dislike, irrevelant, like} from '../Redux/Auth/Login/DisplayAction';
+import { Link,Route } from 'react-router-dom';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import SimpleModal from './Pop';
+
 const Post = ({id}) => {
     
 const dispatch=useDispatch();
@@ -12,9 +13,10 @@ const dispatch=useDispatch();
     console.log(user)
     const Display = useSelector(state => state.display.display)
     console.log(Display)
+    
 
     return (
-<div class="col-xl-6 col-lg-6 col-6">
+<div class="col-xl-6 col-lg-6 col">
   {Display.map(e=>id === e.skill_id._id ?
     <Card className='homepage__card'>
 
@@ -22,28 +24,28 @@ const dispatch=useDispatch();
                <Avatar alt={"title"} src={e.skill_id.photo} className="homepage__card__header__avatar" />
                <div className="skill_name">
              <h5> <strong>{e.skill_id.Title}</strong></h5> 
+             <div className="user_name">
+        <h6>  {e.user_id.user_name}</h6>
+          </div>
                </div>
           </div>
-          <div className="user_name">
-         <strong>  PostedBy:</strong> {e.user_id.user_name}
-          </div>
+          
           <div className="bit_name">
           <strong> Bit_Title:</strong>  {e.bit_id.title}
           </div>
 <div className="con">
-  Content:{e.content}
+<strong> Content:</strong>{e.content}
   </div>
 
   <div className="icons">
   <div class="warn-img">
    
-   <BiLike className="like_icon" onClick={()=>{dispatch(like(e._id,user._id));}}  variant="contained"
+   <ThumbUpAltIcon className={e.like.includes(user._id)?"like_icon":"likes_icon"} onClick={()=>{dispatch(like(e._id,user._id));}} 
        size={100}/>{e.like.length}
-<BiDislike className="dislike_icon"  onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
+<ThumbDownIcon className={e.dislike.includes(user._id)?"dislike_icon":"dislikes_icon"} onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
 </div>
-<WarningIcon className="warning_icon" onClick={()=>{dispatch(irrevelant(e._id,user._id))}} size={100}/>{e.irrevelant_content.length}
-
-
+<Link to={{pathname:'/navbar/postDetails',state:e}} >view</Link>
+<SimpleModal postid={e._id}/>
   </div>
   
   </Card>
