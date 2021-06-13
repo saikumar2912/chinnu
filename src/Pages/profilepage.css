@@ -1,25 +1,20 @@
-.profile{
-  display: grid;
-  padding:10px;
-  height: 80vh;
 
-
-} 
 .profile__body{
   display: flex;
   margin-top: 10px;
   
   border-radius: 2px;
-  background-color: white;
   padding:10px;
 }
 
 .profile__body__left{
   flex-direction: column;
-  flex: 0 0 300px;
-  width:300px;
+  flex: 0 0 3%;
+  width:30%;
   padding: 1rem;
-  border-right:1px solid #dedede;
+  color:#fff;
+  transition: 15s;
+  box-shadow: 1px 1px 20px 5px #15f4ee;
   /* margin-top: -10%; */
   /* color: rgb(255, 157, 171); */
 }
@@ -47,9 +42,16 @@
 .profile__body__left > h1{
   align-self: center;
   font-family: Serif;
-  color:black;
-  padding: 20px; 
-margin-right:100px;
+  color:#fff;
+padding-top:1rem;
+margin-top: 1rem;
+border-top:2px solid #15f4ee;
+}
+.margin-right{
+  margin-right: 1rem;
+}
+.MuiSvgIcon-root{
+  margin-right: 1rem;
 }
 .profile__body__up{
 
@@ -90,7 +92,7 @@ margin-right:100px;
 
 .new{
   margin-left:2rem;
-  width:calc(100% - 300px);
+  width:calc(100% - 35%);
 }
 
 .skill_name h5{ margin-bottom: 0; flex:1;}

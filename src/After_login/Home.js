@@ -1,8 +1,6 @@
 import React from 'react'
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Post from '../components/Post';
-import { Display } from '../Redux/Auth/Login/DisplayAction';
-import './Home.css'
 const Home = () => {
 
   const user = useSelector(state => state.user.user)
@@ -19,9 +17,8 @@ console.log(state)
 
 
   return (
-    <div class="card-class"> 
-          <div class="h-row">
-
+    <div class="app-container"> 
+          <div class="admin-home-cards">
       {skill.map(e=>e.followers.map(s=>(
         user._id ===s ? <Post id={e._id}/> :<div> </div>
 

@@ -1,6 +1,4 @@
-
 import React from 'react';
-import {useDispatch} from 'react-redux';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
@@ -21,8 +19,8 @@ export default function FadeMenu() {
   };
 
   return (
-    <div>
-     <CgProfile onClick={handleClick} className="cgprofile"/>
+    <div >
+     <CgProfile onClick={handleClick} />
       <Menu
         id="fade-menu"
         anchorEl={anchorEl}
@@ -31,13 +29,13 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-                  <Link to="/navbar/profile" className='navbar-link'>Profile</Link>
+                  <Link className="profile" to="/navbar/profile" >Profile</Link>
 
         <MenuItem onClick={()=>{
           // AuthService.logout()
           history.replace("/login")
           window.location.reload()
-          }}>Logout</MenuItem>
+          }}><div className="profile"> Logout</div></MenuItem>
       </Menu>
     </div>
   );

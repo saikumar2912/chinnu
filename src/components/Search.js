@@ -11,7 +11,7 @@ console.log(state)
     const history =useHistory();
    
     return (
-        <div>
+        <div class="navbar-search">
             <input className="search__input" type="text" placeholder="Search skills" onChange={(e)=>setSearch(e.target.value)}  />
             <SearchRoundedIcon className="search__icon" onClick={()=>{history.push('./search',search)}}></SearchRoundedIcon>
         </div>

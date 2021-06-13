@@ -1,16 +1,14 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import Axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux'
 import { follow } from '../Redux/Auth/ADMIN/SkillAction';
-import './Skills.css';
 import { Card } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Delete } from '../Redux/Auth/PostAction';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PeopleIcon from '@material-ui/icons/People';
-import $ from 'jquery';
+import SimplePop from '../Admin/Editskill';
+import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
+
 
 export default function RecipeReviewCard() {
   const dispatch=useDispatch();
@@ -36,55 +34,41 @@ console.log(Data)
   return (
 
     <>   
-    <div class="ka-cardlist">
-      <a href="javascript:;" class="ka-prev disabled" aria-label="Previous"></a>
-      <a href="javascript:;" class="ka-next" aria-label="Next"></a>
-    <div class="ka-cardlist-wrap">
-    <div class="ka-cardlist-inner">
-
-    {filteredPost.map((e)=> <>
-              {e.Title.length > 0 ?
-              
-              <div className='card ka-summarycard active'>
-              <div className="homepage__card__header" >
-
-              <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
-              <div className="skill_name">
-              <h4> {e.Title}</h4> 
-
-             
-
-              </div>
-<PeopleIcon/>      {e.followers.length}
-
+    <div class="app-container">
+      <div class="row">
+        {/* <input type="text" onChange={e=>setskills(e.target.value)}/> */}
+        {filteredPost.map((e)=> <>{e.Title.length > 0 ?
+        <div className="col-12 col-xl-4 col-lg-4">
+              <div className="admin-cards">
+                <span></span>
+                <Link to={{pathname:'/navbar/topskillposts',state:e}} ></Link>
+                <div class="card-head">
+                  <Avatar alt={"title"} src={e.photo}  />
+                  <div class="card-head-in">
+                    {user.role==="user"?<> <h4>{e.Title}</h4></>:<><Link className="title" to={{pathname:'/navbar/topskillposts',state:e}} >{e.Title}</Link></>}
+                  </div>
+                  <PeopleIcon/>{e.followers.length}
               </div>
 
-              <div className="description" >
-               <h3><strong> Description:</strong> </h3>
-
-               <h4 className="des">{e.Description} </h4> 
+              <div className="card-body">
+                <strong> Description:</strong>
+                <p>{e.Description} </p>
+                <div className="card-foot">
+                  {user.role==="user"?<div className="skill-card-foot home-skill-button">
+                  <a class="skill-button" onClick={()=>dispatch(follow(e._id,user._id))}> {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }</a>
+                </div>:<div class="skill-card-foot">
+                  <div className="skill-button">
+                  <Link to={{pathname:"/navbar/view",
+                  state:e._id}} onClick={()=>{}}>add bit</Link>
+                  </div>
+                  < DeleteSweepIcon  onClick={()=>{dispatch(Delete(e._id))}}/>
+                  <SimplePop id={e._id}/>
+                </div>}  
+               </div>
               </div>
-              <div className="btn-di">
-              {user.role==="user"?<div>
-                <button className="btn btn-primary" onClick={()=>dispatch(follow(e._id,user._id))}> 
-                {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
-</button>
-</div>:
-
-<div className='navbar-item'>
-        <Link to={{pathname:"/navbar/view",
-                  state:e._id}} onClick={()=>{}} className="navbar-lin">add bit</Link>
-        < DeleteForeverIcon className="bttn" onClick={()=>{dispatch(Delete(e._id))}}/>
-
-</div>
-}  
-               
- 
-
-              </div>
-
               </div>
               
+              </div>
               
           
          
@@ -98,7 +82,6 @@ console.log(Data)
     
       
     )}
-    </div>
     </div>
     </div>
     </>

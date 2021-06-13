@@ -1,5 +1,7 @@
 const initialstate={
-  display:[]
+  display:[],
+  count:null,
+  Report:[]
 }
 
 const reducer = (state = initialstate, action) => {
@@ -11,6 +13,12 @@ const reducer = (state = initialstate, action) => {
       display:action.payload
         
       }
+      case "REPORT_SUCCESS":
+        return {
+         ...state,
+        count:action.payload
+          
+        }
       case "DELETE_POST_SUCCESS":
       return{
 ...state,
@@ -19,6 +27,12 @@ display:action.payload
     case "DISPLAY_POST_FAILED":
       return {
           ...state
+      }
+      case "REPORT_POST_SUCCESS":
+      return {
+       ...state,
+      Report:action.payload
+        
       }
      
     default: return state

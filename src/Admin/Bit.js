@@ -35,27 +35,32 @@ const[title,setTitle]=useState('')
   },[state])
     
  return (
-   <div>
+   <div class="app-container bit-container">
+     <div class="bit-card">
    {Data.map((e)=><>
-   {e.title.length >0 ?<Card>
+   {e.title.length >0 ?<div class="bit-card-in">
      {e.title}
 
      {user.role==="user"?<></>:<>
+     <div class="bit-icons">
      <SimplePopover id={e.bit_id}/>
      <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
-     
+     </div>
      </>}
-   </Card>:<>
+   </div>:<>
   
    </>}
    </>)}
   
  <div>
-   {user.role==="user"?<></>:<><input onChange={(e)=>setTitle(e.target.value)}/>
-<Button label="ADD" onClick={()=>dispatch(submit(state,title))}/></>}
+   {user.role==="user"?<></>:<><input className="form-control" onChange={(e)=>setTitle(e.target.value)}/>
+   <div className="skill-button">
+<a className="bit" onClick={()=>dispatch(submit(state,title))}>ADD</a>
+</div>
+</>}
  
 </div> 
-
+</div>
   </div>
 
 

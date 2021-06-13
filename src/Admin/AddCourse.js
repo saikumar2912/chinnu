@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
-import '../App.css'
 import {Post} from '../Redux/Auth/PostAction';
 const AddCourse = () => {
     
@@ -43,19 +42,27 @@ console.log("addPost")
  
 
     return (
-     <div>
-        <div>
-            <label>Title</label>
-            <input type="text" onChange={(e)=>setTitle(e.target.value)}/>  
-            </div>
+     <div className="app-container">
+         <div class="add-skill">
+            <div class="add-skill-box">
+                <span></span>
             <div>
-                <input type="file" onChange={(e)=>setImage(e.target.files[0])}/>
-            </div>
-            <div>   
-                <textarea  cols="30" rows="10" className="textarea"onChange={(e)=>setDescription(e.target.value)} placeholder="Description"></textarea>
+            <div className="skill-title">
+            <label>Title</label>
+            <input type="text" className="form-control" onChange={(e)=>setTitle(e.target.value)}/>  
         </div>
-       
-        <button onClick={()=>{addPost(user._id,Title,Description)}}> submit</button>
+        <div className="skill-file">
+            <input type="file"  onChange={(e)=>setImage(e.target.files[0])}/>
+        </div>
+        <div className="skill-text">   
+            <textarea  cols="30" rows="10" className="textarea form-control" onChange={(e)=>setDescription(e.target.value)} placeholder="Description"></textarea>
+        </div>
+        <div class="skill-button">
+        <a onClick={()=>{addPost(user._id,Title,Description)}}> submit</a>
+        </div>
+            </div>
+            </div>
+         </div>
     </div>
     )
 }

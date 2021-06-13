@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Register from './components/Register';
 import New from './Pages/InitialPage';
 import Contactus from './Pages/Contactus';
+import LoginOtp from './Pages/LoginOtp';
 import {useSelector} from 'react-redux'
 // import { ProtectedRoute } from './components/Protected_route';
 // import New from './After_login/New'
@@ -24,7 +25,7 @@ console.log(user)
           <Route path='/Register'exact component={Register} />
          <Route path="/contactus" exact component={Contactus}/>
          <Route path='/login'exact component={Login}/>
-         
+         <Route path='/loginotp'exact component={LoginOtp}/>
          <Route path="*" component={()=>"404 not found"}/>    
 
         </Switch>: 

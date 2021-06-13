@@ -72,10 +72,7 @@ useEffect(()=>{
   console.log(Data)
 
     return (
-        <div className='card-class'>
-            <div className="profile__post">
-
-            </div>
+        <div className='app-container'>
         <div className="profile__body" >
             
 <div className="profile__body__left">
@@ -85,16 +82,16 @@ useEffect(()=>{
 
 <h1 className="h1">{user.user_name}</h1>
 
-<MdEmail/> {user.email_id}
-<div>
-<HiPhone/> {user.phoneNo}
+<MdEmail class="margin-right"/> {user.email_id}
+<div className="mt-3">
+<HiPhone class="margin-right"/> {user.phoneNo}
 
 </div>
-<div>
+<div className="mt-3">
 <SchoolRoundedIcon/>{user.Education}
 
 </div>
-<div> 
+<div className="mt-3"> 
   <AssignmentIndRoundedIcon/>{user.Bio}
 </div>
 
@@ -105,28 +102,32 @@ useEffect(()=>{
 
     </div> 
     <div className="new">
-    <h1>Following Skills</h1>
-
-      <div class="ro">
-
+      <div className="admin-cards profile-follow">
+        <span></span>
+        <div class="card-body">
+    <h4>Following Skills</h4>
+<div className="profile-skills">
+      <div className="row">
       {Data.map((e)=><>
       {e.title.length > 0?
-      <div class="col-lg-6 col-xl-6 col-6">
-      <Card className='profile__card'>
-      <div className="homepage__card__header" >
-               <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
+      <div class="col-4">
+      <div className='profile-card'>
+        
+      
+               
                <div className="skill_name">
              <h5> <strong>{e.title}</strong></h5> 
                  
                </div>
-               <button type="button" class="btn btn-primary">
- <span class="badge badge-light">4</span>
-</button>  
-          </div>
+                 
+        
          
   
-      </Card></div>:<div> NO POSTS YET</div> }
+      </div></div>:<div> NO POSTS YET</div> }
       </>)}
+      </div>
+     </div>
+     </div>
      </div>
     </div>
 

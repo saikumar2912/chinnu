@@ -44,8 +44,7 @@ const history=useHistory();
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
           
         <li className='navbar-item'>
-        {location.pathname === "/navbar/addpost"?<></> :<SearchAppBar/>}
-</li>
+        {location.pathname === "/navbar/addpost"?<></> :<SearchAppBar/>}</li>
         <li className='navbar-item'>
             <Link to="/navbar/Home" className='navbar-links' onClick={closeMobileMenu}>
               Home
@@ -62,7 +61,9 @@ const history=useHistory();
             <Link to="/navbar/addpost" className='navbar-links' onClick={closeMobileMenu} >Add Post  </Link>
             
           </li>
+          <li className="navbar-item profile-item">
           <Profile/>
+          </li>
           </ul>
           </>
           :
@@ -86,11 +87,11 @@ const history=useHistory();
           </Link>
           </li>
           <li className='navbar-item'>
-            <button className='navbar-links' onClick={()=>{
+            <a className='navbar-links' onClick={()=>{
           // AuthService.logout()
           history.replace("/login")
           window.location.reload()
-          }}> logout</button>
+          }}> logout</a>
 </li>
         
         
@@ -112,6 +113,7 @@ const history=useHistory();
 <Route path="/navbar/new" component={AdminHome}/>
 <Route path="/navbar/achivement" component={Achivements}/>
 <Route path="/navbar/postDetails" component={PostDetails}/>
+
 
 <footer class="c-footer">
             <div class="c-inner">

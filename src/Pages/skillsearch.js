@@ -1,8 +1,7 @@
 import { Card } from '@material-ui/core';
 import React, { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import WarningIcon from '@material-ui/icons/Warning';
-import {  dislike, irrevelant, like} from '../Redux/Auth/Login/DisplayAction';
+import {  dislike, like} from '../Redux/Auth/Login/DisplayAction';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
@@ -12,7 +11,6 @@ const Skillsearch = (search) => {
 
   const [skills, setskills] = useState('')
 
-  const findd = search.history.location.state
   const dispatch=useDispatch();
 
   const user = useSelector(state => state.user.user)
@@ -58,7 +56,6 @@ const Skillsearch = (search) => {
        size={100}/>{e.like.length}
 <ThumbDownIcon className={e.dislike.includes(user._id)?"dislike_icon":"dislikes_icon"} onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
 </div>
-<WarningIcon className={e.irrevelant_content.includes(user._id)?"warning_icon":"warnings_icon"} onClick={()=>{dispatch(irrevelant(e._id,user._id))}} size={100}/>{e.irrevelant_content.length}
 
 
   </div>
